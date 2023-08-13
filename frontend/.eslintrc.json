@@ -1,0 +1,6 @@
+{
+  "extends": "next",
+  "rules": {
+    "linebreak-style": 0
+  }
+}

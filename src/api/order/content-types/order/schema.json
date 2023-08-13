@@ -1,0 +1,64 @@
+{
+  "kind": "collectionType",
+  "collectionName": "orders",
+  "info": {
+    "singularName": "order",
+    "pluralName": "orders",
+    "displayName": "Order",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Email": {
+      "type": "email",
+      "required": true
+    },
+    "paymentInfo": {
+      "type": "json"
+    },
+    "Address": {
+      "type": "text",
+      "required": false,
+      "maxLength": 100,
+      "minLength": 10
+    },
+    "Name": {
+      "type": "string",
+      "required": false,
+      "minLength": 4,
+      "maxLength": 50
+    },
+    "Amount": {
+      "type": "integer",
+      "required": true
+    },
+    "Status": {
+      "type": "enumeration",
+      "enum": [
+        "InProcess",
+        "Pending",
+        "Delivered",
+        "Cancelled"
+      ],
+      "required": true,
+      "default": "Pending"
+    },
+    "products": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::product.product"
+    },
+    "paymentIntentId": {
+      "type": "text",
+      "unique": true
+    },
+    "owner": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    }
+  }
+}
